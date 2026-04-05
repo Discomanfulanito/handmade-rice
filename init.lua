@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+--[[
 vim.diagnostic.config({
   virtual_text = {
     prefix = "!",
@@ -11,7 +12,7 @@ vim.diagnostic.config({
     end,
   },
 })
---
+--]]
 
 require("config.lazy") -- same as lua/config/lazy.lua
 require('keymaps')
