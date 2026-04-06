@@ -28,7 +28,43 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.setloclist)
 ----------------------------------------
 
 -- Neotree
-vim.keymap.set("n", "<leader>x", "<cmd>Neotree toggle=true<CR>")
+vim.keymap.set('n', '-', function()
+	local api = require("nvim-tree.api")
+
+	local file = vim.fn.expand('%:p')
+	if file == "" or vim.fn.filereadable(file) == 0 then
+		file = vim.fn.getcwd()
+	end
+
+	vim.cmd("cd " .. vim.fn.fnamemodify(file, ":p:h"))
+
+	api.tree.open()
+	api.tree.find_file({ focus = true, path = file })
+end, { desc = "Reveal file in nvim-tree" })
+
+--vim.keymap.set('n', '-', function()
+--		local reveal_file = vim.fn.expand('%:p')
+--		if (reveal_file == '') then
+--			reveal_file = vim.fn.getcwd()
+--		else
+--			local f = io.open(reveal_file, "r")
+--			if (f) then
+--				f.close(f)
+--			else
+--				reveal_file = vim.fn.getcwd()
+--			end
+--		end
+--		require('neo-tree.command').execute({
+--			action = "focus", -- OPTIONAL, this is the default value
+--			source = "filesystem", -- OPTIONAL, this is the default value
+--			position = "left", -- OPTIONAL, this is the default value
+--			toggle = true,
+--			reveal_file = reveal_file, -- path to file or folder to reveal
+--			reveal_force_cwd = true, -- change cwd without asking if needed
+--		})
+--	end,
+--	{ desc = "Open neo-tree at current file or working directory" }
+--);
 
 -- Undo tree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
@@ -40,7 +76,6 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>ps', function ()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") } );
+vim.keymap.set('n', '<leader>ps', function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
-
