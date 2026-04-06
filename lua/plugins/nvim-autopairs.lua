@@ -1,3 +1,4 @@
+-- Closes the pairs
 return {
 	{
 		'windwp/nvim-autopairs',
@@ -6,4 +7,3 @@ return {
 	}
 
 }
-
