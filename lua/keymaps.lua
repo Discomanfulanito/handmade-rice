@@ -72,12 +72,26 @@ end)
 
 
 
-
-
-
 vim.keymap.set("n", "<leader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
-vim.keymap.set("n", "<leader>e", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "run operator selection" })
 vim.keymap.set("n", "<leader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
 vim.keymap.set("n", "<leader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
-vim.keymap.set("v", "<leader>r", ":<C-u>MoltenEvaluateVisual<CR>gv",
-	{ silent = true, desc = "evaluate visual selection" })
+
+
+vim.keymap.set('n', '<leader>me', function()
+	vim.cmd([[?^\`\`\`]])
+	vim.cmd('normal! j')
+	vim.cmd('normal! V')
+	vim.cmd([[/^\`\`\`]])
+	vim.cmd('normal! k')
+	vim.api.nvim_feedkeys(
+		vim.api.nvim_replace_termcodes(':<C-u>MoltenEvaluateVisual<CR>', true, false, true),
+		'x',
+		false
+	)
+	-- Exit visual mode back to normal mode
+	vim.api.nvim_feedkeys(
+		vim.api.nvim_replace_termcodes('<Esc>', true, false, true),
+		'x',
+		false
+	)
+end)
