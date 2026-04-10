@@ -46,3 +46,20 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		vim.cmd("MoltenExportOutput!")
 	end,
 })
+
+-- Solo para buffers markdown
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = "es,en"
+		vim.opt_local.conceallevel = 2 -- oculta sintaxis markdown
+		vim.opt_local.textwidth = 80
+		vim.wo.number = false
+		vim.wo.relativenumber = false
+		vim.wo.signcolumn = "no"
+		vim.wo.foldcolumn = "0"
+	end
+})

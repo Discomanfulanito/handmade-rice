@@ -85,3 +85,20 @@ require("jupytext").setup({
 	output_extension = "md",
 	force_ft = "markdown",
 })
+
+require("telescope").setup({
+	defaults = {
+		layout_strategy = "vertical",
+		layout_config = {
+			vertical = {
+				preview_height = 0.75, -- 👈 preview takes 60% (bigger)
+				results_height = 0.15, -- 👈 results take 30%
+				prompt_position = "bottom",
+				mirror = false, -- keeps preview on top
+			},
+			width = 0.7,
+			height = 0.9,
+		},
+		sorting_strategy = "ascending", -- prompt at bottom works best with this
+	},
+})
