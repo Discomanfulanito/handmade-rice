@@ -15,9 +15,9 @@ vim.keymap.set({ 'n' }, '<A-l>', '<C-w>l')
 
 
 -- Disable F1 in normal, insert, and visual modes
-vim.keymap.set('n', '<F1>', '<Nop>', { silent = true })
-vim.keymap.set('i', '<F1>', '<Nop>', { silent = true })
-vim.keymap.set('v', '<F1>', '<Nop>', { silent = true })
+-- vim.keymap.set('n', '<F1>', '<Nop>', { silent = true })
+-- vim.keymap.set('i', '<F1>', '<Nop>', { silent = true })
+-- vim.keymap.set('v', '<F1>', '<Nop>', { silent = true })
 
 
 -- Diagnostic
