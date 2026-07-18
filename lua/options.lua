@@ -17,7 +17,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
+vim.o.ignorecase = smartcase
 vim.o.smartcase = true
 
 -- Highlight the line where the cursor is on
@@ -53,3 +53,6 @@ vim.g.molten_virt_text_output = true
 
 -- this will make it so the output shows up below the \`\`\` cell delimiter
 vim.g.molten_virt_lines_off_by_1 = true
+
+-- SESSION
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

@@ -21,7 +21,7 @@ vim.keymap.set({ 'n' }, '<A-l>', '<C-w>l')
 
 
 -- Diagnostic
-vim.keymap.set('n', '<leader>e', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.setloclist, { desc = "Diagnostic code" })
 
 ----------------------------------------
 --------		PLUGINS			--------
@@ -52,22 +52,19 @@ vim.keymap.set('n', '-', function()
 );
 
 -- Undo tree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undo tree" })
 
 -- Fugitive
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Open git fugitive" })
 
 -- Telescope keymaps
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = "Find file by name" })
+vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "Find file by name in repo" })
 vim.keymap.set('n', '<leader>ps', function()
-	builtin.live_grep();
-end)
-
-
-
-
+		builtin.live_grep();
+	end,
+	{ desc = "Grep" })
 
 
 

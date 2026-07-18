@@ -160,3 +160,5 @@ require('lualine').setup {
 	inactive_winbar = {},
 	extensions = {}
 }
+
+require("auto-session").setup({})
