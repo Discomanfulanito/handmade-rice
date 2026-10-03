@@ -39,7 +39,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		pcall(vim.treesitter.start, args.buf) -- evita romper si falla
 	end,
 })
-
 vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = "*.ipynb",
 	callback = function()
